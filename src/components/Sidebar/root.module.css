@@ -1,0 +1,25 @@
+.aside_container {
+  width: 348px;
+  --tw-bg-opacity: 1;
+  --tw-border-opacity: 1;
+  background-color: rgb(18 18 20 / var(--tw-bg-opacity));
+  padding: 1.5rem /* 24px */;
+  border-color: rgb(41 41 46 / var(--tw-border-opacity));
+}
+
+.title {
+  font-weight: 700;
+  font-size: 1.5rem /* 24px */;
+  line-height: 2rem /* 32px */;
+  padding-bottom: 1.5rem /* 24px */;
+  margin-bottom: 1.5rem /* 24px */;
+  border-bottom-width: 1px;
+  border-color: rgb(50 50 56 / 1);
+  display: block;
+}
+
+.lesson_container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}

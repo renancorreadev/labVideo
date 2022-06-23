@@ -1,0 +1,13 @@
+.header_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--gray-500);
+  width: 100%;
+  padding-top: 1.25rem /* 20px */;
+  padding-bottom: 1.25rem /* 20px */;
+
+  border-bottom-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(41 41 46 / var(--tw-border-opacity));
+}

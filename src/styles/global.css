@@ -2,7 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --green-300: #00b37e;
+  --green-500: #00875f;
+  --green-700: #015f43;
 
-body{
-    @apply bg-zinc-900 text-zinc-500;
+  --blue-500: #81d8f7;
+
+  --orange-500: #fba94c;
+
+  --red-500: "#F75A68";
+
+  --gray-100: #e1e1e6;
+  --gray-200: #c4c4cc;
+  --gray-300: #8d8d99;
+  --gray-400: #323238;
+  --gray-500: #29292e;
+  --gray-900: #09090a;
+}
+
+body {
+  @apply bg-gray-900 text-gray-100;
+  -webkit-font-smoothing: antialiased;
 }
