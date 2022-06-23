@@ -5,31 +5,83 @@ import {
   FileArrowDown,
   Lightning,
 } from "phosphor-react";
-export function Video() {
+import { DefaultUi, Player, Youtube } from "@vime/react";
+//@vite-ignore
+import "@vime/core/themes/default.css";
+import { gql, useQuery } from "@apollo/client";
+
+const GET_LESSONS_BY_SLUG = gql`
+  query GetLessonBySlug($slug: String) {
+    lesson(where: { slug: $slug }) {
+      title
+      videoId
+      description
+      teacher {
+        name
+        avatarURL
+        bio
+      }
+    }
+  }
+`;
+
+interface GetLessonsBySlugReponse {
+  lesson: {
+    title: string;
+    videoId: string;
+    description: string;
+    teacher: {
+      name: string;
+      avatarURL: string;
+      bio: string;
+    };
+  };
+}
+
+interface VideoProps {
+  lessonSlug: string;
+}
+export function Video(props: VideoProps) {
+  const { data } = useQuery<GetLessonsBySlugReponse>(GET_LESSONS_BY_SLUG, {
+    variables: {
+      slug: props.lessonSlug,
+    },
+  });
+
+  if (!data) {
+    return (
+      <div className="flex-1">
+        <p>Carregando...</p>
+      </div>
+    );
+  }
+
   return (
     <div className={root.video_container}>
       <div className={root.video_quad_box}>
-        <div className={root.videoplayer}></div>
+        <div className={root.videoplayer}>
+          <Player>
+            <Youtube videoId={data.lesson.videoId} />
+            <DefaultUi />
+          </Player>
+        </div>
       </div>
 
       <div className={root.section_container_1}>
         <div className={root.section_containerBox}>
           <div className={root.container_box_text}>
-            <h1>Abertura do Evento de Blockchain</h1>
-            <p>
-              Nessa Aula vamos obter os dados do evento e entender como
-              funciona.
-            </p>
+            <h1>{data.lesson.title}</h1>
+            <p>{data.lesson.description}</p>
             <div className={root.container_box_teacher}>
               <img
-                src="https://github.com/renancorreadev.png"
+                src={data.lesson.teacher.avatarURL}
                 alt="teacher image"
                 className={root.image_teacher}
               />
 
               <div className={root.container_teacher_description}>
-                <strong>Renan Correa</strong>
-                <span>Front End Developper</span>
+                <strong>{data.lesson.teacher.name}</strong>
+                <span>{data.lesson.teacher.bio}</span>
               </div>
             </div>
           </div>

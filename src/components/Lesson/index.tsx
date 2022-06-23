@@ -2,6 +2,7 @@ import root from "./root.module.css";
 import { CheckCircle, Lock } from "phosphor-react";
 import { isPast, format } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
+import { Link } from "react-router-dom";
 
 interface LessonProps {
   title: string;
@@ -12,7 +13,7 @@ interface LessonProps {
 
 export type LessonType = "live" | "class";
 
-export function Lesson({ availableAt, type }: LessonProps) {
+export function Lesson({ slug, availableAt, type }: LessonProps) {
   const isLessonAvailable = isPast(availableAt);
   const availableDateFormat = format(
     availableAt,
@@ -21,9 +22,12 @@ export function Lesson({ availableAt, type }: LessonProps) {
   );
 
   return (
-    <a href="#" className={root.lesson_container}>
+    <Link
+      to={`/event/lesson/${slug}`}
+      className={root.lesson_container + " group"}
+    >
       <span className={root.datetime}>{availableDateFormat}</span>
-      <div className={root.viewBox}>
+      <div className={root.viewBox + " group-hover:border-green-500"}>
         <header className={root.header}>
           {isLessonAvailable ? (
             <span className={root.content_title}>
@@ -44,6 +48,6 @@ export function Lesson({ availableAt, type }: LessonProps) {
           Abertura do evento Ignite labs
         </strong>
       </div>
-    </a>
+    </Link>
   );
 }
