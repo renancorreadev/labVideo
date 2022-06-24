@@ -8,48 +8,20 @@ import {
 import { DefaultUi, Player, Youtube } from "@vime/react";
 //@vite-ignore
 import "@vime/core/themes/default.css";
-import { gql, useQuery } from "@apollo/client";
-
-const GET_LESSONS_BY_SLUG = gql`
-  query GetLessonBySlug($slug: String) {
-    lesson(where: { slug: $slug }) {
-      title
-      videoId
-      description
-      teacher {
-        name
-        avatarURL
-        bio
-      }
-    }
-  }
-`;
-
-interface GetLessonsBySlugReponse {
-  lesson: {
-    title: string;
-    videoId: string;
-    description: string;
-    teacher: {
-      name: string;
-      avatarURL: string;
-      bio: string;
-    };
-  };
-}
+import { useGetLessonBySlugQuery } from "../../graphql/generated";
 
 interface VideoProps {
   lessonSlug: string;
 }
 
 export function Video(props: VideoProps) {
-  const { data } = useQuery<GetLessonsBySlugReponse>(GET_LESSONS_BY_SLUG, {
+  const { data } = useGetLessonBySlugQuery({
     variables: {
       slug: props.lessonSlug,
     },
   });
 
-  if (!data) {
+  if (!data || !data.lesson) {
     return (
       <div className="flex-1">
         <p>Carregando...</p>
@@ -73,18 +45,20 @@ export function Video(props: VideoProps) {
           <div className={root.container_box_text}>
             <h1>{data.lesson.title}</h1>
             <p>{data.lesson.description}</p>
-            <div className={root.container_box_teacher}>
-              <img
-                src={data.lesson.teacher.avatarURL}
-                alt="teacher image"
-                className={root.image_teacher}
-              />
+            {data.lesson.teacher && (
+              <div className={root.container_box_teacher}>
+                <img
+                  src={data.lesson.teacher.avatarURL}
+                  alt="teacher image"
+                  className={root.image_teacher}
+                />
 
-              <div className={root.container_teacher_description}>
-                <strong>{data.lesson.teacher.name}</strong>
-                <span>{data.lesson.teacher.bio}</span>
+                <div className={root.container_teacher_description}>
+                  <strong>{data.lesson.teacher.name}</strong>
+                  <span>{data.lesson.teacher.bio}</span>
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
           <div className={root.container_box_buttons}>
