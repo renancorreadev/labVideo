@@ -1,7 +1,7 @@
 import Logo from "../components/archives/Logo";
 import { useState, FormEvent } from "react";
 import { gql, useMutation } from "@apollo/client";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const CREATE_SUBSCRIBER_MUTATION = gql`
   mutation createSubs($name: String!, $email: String!) {
@@ -32,9 +32,9 @@ export function Subscribe() {
   };
 
   return (
-    <div className="min-h-screen bg-blur bg-cover bg-no-repeat flex flex-col items-center">
-      <div className="w-full max-w-[1100px] flex items-center justify-between mt-20 mx-auto">
-        <div className="max-w-[640px]">
+    <div className="min-h-screen bg-blur bg-cover bg-no-repeat flex flex-col items-center ">
+      <div className="w-full max-w-[1100px] flex items-center justify-between mt-20 mx-auto tablet:flex-col">
+        <div className="max-w-[640px] tablet:max-w-[350px]">
           <Logo />
 
           <h1 className="mt-8 text-[2.5rem] leading-tight">
@@ -43,7 +43,7 @@ export function Subscribe() {
             mais robustos e a integração mais consistente do zero com react e
             web3.
           </h1>
-          <p className="mt-4 text-gray-200 leading-relaxed">
+          <p className="mt-4 text-gray-200 leading-relaxed tablet:mb-10">
             Em apenas uma semana você vai dominar na prática uma das tecnologias
             mais utilizadas no universo de blockchain e casos de usos reais com
             didática rica proporcionada pelos melhores profissionais na área do
@@ -79,6 +79,13 @@ export function Subscribe() {
             >
               Garantir minha vaga
             </button>
+
+            <Link
+              to="/event"
+              className="mt-4 bg-green-500 uppercase py-4 rounded font-bold text-sm hover:bg-green-700 transition-colors disabled:opacity-50 text-center"
+            >
+              Acessar Evento
+            </Link>
           </form>
         </div>
       </div>
