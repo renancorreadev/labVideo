@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         blur: "url(/src/assets/blur.png)",
+        web3: "url(/src/assets/web3.png)",
       },
       fontFamily: {
         sans: "Hind, sans-serif",
