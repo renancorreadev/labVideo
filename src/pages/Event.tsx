@@ -10,7 +10,7 @@ export function Event() {
   const LessonOnDemand = () => {
     return (
       <div className="flex-1 flex flex-col justify-center  align-center ">
-        <strong className="text-center text-blue-500 leading-tight text-[3rem] mb-24 animate-bounce ">
+        <strong className="text-center text-blue-500 leading-tight text-[3rem] mt-[140px] animate-bounce ">
           Escolha uma aula e dê o play.
         </strong>
         <img
