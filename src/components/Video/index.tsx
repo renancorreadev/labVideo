@@ -41,6 +41,7 @@ interface GetLessonsBySlugReponse {
 interface VideoProps {
   lessonSlug: string;
 }
+
 export function Video(props: VideoProps) {
   const { data } = useQuery<GetLessonsBySlugReponse>(GET_LESSONS_BY_SLUG, {
     variables: {

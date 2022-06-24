@@ -8,6 +8,9 @@
   padding: 1rem /* 16px */;
   margin-top: 0.5rem /* 8px */;
 }
+.viewBox_Active {
+  @apply bg-green-500;
+}
 
 .header {
   display: flex;
@@ -17,7 +20,7 @@
 .content_title {
   font-size: 0.875rem /* 14px */;
   line-height: 1.25rem /* 20px */;
-  color: rgb(0 135 95 / 1);
+  @apply text-cyan-300;
   font-weight: 500;
   display: flex;
   align-items: center;

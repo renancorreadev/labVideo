@@ -1,7 +1,7 @@
 import root from "./root.module.css";
-import { Lesson } from "../Lesson";
+import { Lesson } from "../Header/Lesson";
 
-import { LessonType } from "../Lesson";
+import { LessonType } from "../Header/Lesson";
 import { gql, useQuery } from "@apollo/client";
 
 const GET_LESSONS_QUERY = gql`
