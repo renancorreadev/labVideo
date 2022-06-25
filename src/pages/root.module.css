@@ -8,3 +8,33 @@
   flex-direction: column;
   min-height: 100vh;
 }
+
+@media screen and (max-width: 1023px) {
+  .main_container {
+    flex-direction: column-reverse;
+  }
+  .responsive {
+    padding: 4rem;
+  }
+  .imgresponsive {
+    max-width: 300px;
+    max-height: 300px;
+  }
+  .textResponsive {
+    font-size: 1rem;
+    margin: 0 !important;
+    padding-top: 5rem;
+  }
+  .formResponsive {
+    width: 93% !important;
+  }
+  .formResponsive_2 {
+    width: 93% !important;
+    margin: 0 !important;
+  }
+  .logo {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+  }
+}

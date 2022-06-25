@@ -76,7 +76,7 @@ export function Video(props: VideoProps) {
         </div>
 
         <div className={root.section_container_2}>
-          <a href="">
+          <a href="" className={root.acess}>
             <div className={root.fileArrow}>
               <FileArrowDown size={40} />
             </div>
@@ -92,16 +92,26 @@ export function Video(props: VideoProps) {
             </div>
           </a>
 
-          <a href="">
+          <a href="" className={root.acess_mobile}>
+            <div className={root.fileArrow}>
+              <FileArrowDown size={40} />
+            </div>
+            <div className={root.container_buttons}>
+              <strong>Material Complementar</strong>
+              <p>
+                Acesse o Material complementar para acerelar seu desenvolvimento
+                em blockchain.
+              </p>
+            </div>
+          </a>
+
+          <a href="" className={root.acess_mobile}>
             <div className={root.fileArrow}>
               <FileArrowDown size={40} />
             </div>
             <div className={root.container_buttons}>
               <strong>Acesse os Wallpapers dessa Edição.</strong>
               <p>Clique aqui e baixe o nosso Wallpaper para esse evento.</p>
-            </div>
-            <div className={root.container_icon}>
-              <CaretRight size={24} />
             </div>
           </a>
         </div>

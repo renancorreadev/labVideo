@@ -9,12 +9,16 @@ export function Event() {
 
   const LessonOnDemand = () => {
     return (
-      <div className="flex-1 flex flex-col justify-center  align-center ">
-        <strong className="text-center text-blue-500 leading-tight text-[3rem] mt-[140px] animate-bounce ">
+      <div
+        className={`flex-1 flex flex-col justify-center  align-center ${root.responsive}`}
+      >
+        <strong
+          className={`text-center text-blue-500 leading-tight text-[3rem] mt-[140px] animate-bounce  ${root.textResponsive}`}
+        >
           Escolha uma aula e dê o play.
         </strong>
         <img
-          className="flex justify-center w-[600px] h-[600px]  align-center self-center"
+          className={`flex justify-center w-[600px] h-[600px]  align-center self-center ${root.imgresponsive}`}
           src="https://i.ibb.co/ZcmvvCm/web3.png"
           alt=""
         />

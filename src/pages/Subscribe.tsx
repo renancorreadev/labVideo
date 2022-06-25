@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { FormEvent, useContext, useRef } from "react";
 import { EmailContext } from "../context/emailContext";
 import { toast, ToastContainer } from "react-toastify";
+import root from "./root.module.css";
 
 import "react-toastify/dist/ReactToastify.css";
 
@@ -68,7 +69,9 @@ export function Subscribe() {
     <div className="min-h-screen bg-blur bg-cover bg-no-repeat flex flex-col items-center ">
       <div className="w-full max-w-[1380px] flex items-center justify-between mt-20 mx-auto tablet:flex-col">
         <div className="max-w-[640px] tablet:max-w-[350px] ">
-          <Logo />
+          <div className={root.logo}>
+            <Logo />
+          </div>
 
           <h1 className="mt-8 text-[2.5rem] leading-tight">
             Construa os{" "}
@@ -84,7 +87,9 @@ export function Subscribe() {
           </p>
         </div>
 
-        <div className="p-8 bg-gray-700 border border-gray-500 rounded mr-[2rem]">
+        <div
+          className={`p-8 bg-gray-700 border border-gray-500 rounded mr-[2rem] ${root.formResponsive_2}`}
+        >
           <strong className="text-2xl mb-6 block">
             Inscreva-se gratuitamente
           </strong>
@@ -115,7 +120,9 @@ export function Subscribe() {
         </div>
       </div>
 
-      <div className="p-8 bg-gray-700 border border-gray-500 rounded w-[50%] mt-[70px]">
+      <div
+        className={`p-8 bg-gray-700 border border-gray-500 rounded w-[50%] mt-[70px] ${root.formResponsive}`}
+      >
         <strong className="text-2xl mb-6 block">Acesse Agora!</strong>
         <form onSubmit={handleToRender} className="flex flex-col gap-2 w-full">
           <input

@@ -136,3 +136,33 @@
 .container_icon {
   @apply h-full p-6 flex items-center;
 }
+
+.acess_mobile {
+  display: none !important;
+}
+
+@media screen and (max-width: 1023px) {
+  .section_container_1,
+  .section_container_2,
+  .container_box_text,
+  .section_containerBox {
+    display: flex;
+    flex-direction: column;
+  }
+  .container_box_buttons {
+    width: 100% !important;
+  }
+  .acess {
+    display: none !important;
+  }
+  .acess_mobile {
+    display: flex !important;
+    flex-direction: column;
+  }
+  .container_buttons {
+    text-align: center;
+  }
+  .fileArrow {
+    justify-content: center;
+  }
+}
