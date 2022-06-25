@@ -1,5 +1,5 @@
 import Logo from "../components/archives/Logo";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FormEvent, useContext, useRef } from "react";
 import { EmailContext } from "../context/emailContext";
 import { toast, ToastContainer } from "react-toastify";
@@ -131,7 +131,7 @@ export function Subscribe() {
         </form>
       </div>
 
-      <img src="/src/assets/react.png" alt="" className="mt-10" />
+      <img src="https://i.ibb.co/6tWvygv/react.png" alt="" className="mt-10" />
       <ToastContainer limit={3} />
     </div>
   );

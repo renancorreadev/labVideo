@@ -15,7 +15,7 @@ export function Event() {
         </strong>
         <img
           className="flex justify-center w-[600px] h-[600px]  align-center self-center"
-          src="/src/assets/web3.png"
+          src="https://i.ibb.co/ZcmvvCm/web3.png"
           alt=""
         />
       </div>
