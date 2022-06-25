@@ -5576,6 +5576,13 @@ export type CreateSubsMutationVariables = Exact<{
 
 export type CreateSubsMutation = { __typename?: 'Mutation', createSubscriber?: { __typename?: 'Subscriber', id: string } | null };
 
+export type PublishEmailMutationVariables = Exact<{
+  email?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type PublishEmailMutation = { __typename?: 'Mutation', publishSubscriber?: { __typename?: 'Subscriber', email: string } | null };
+
 export type GetLessonBySlugQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']>;
 }>;
@@ -5587,6 +5594,11 @@ export type GetLessonsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetLessonsQuery = { __typename?: 'Query', lessons: Array<{ __typename?: 'Lesson', id: string, lessonType: LessonType, availableAt?: any | null, title: string, slug: string }> };
+
+export type Get_Subscribers_By_EmailQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type Get_Subscribers_By_EmailQuery = { __typename?: 'Query', subscribers: Array<{ __typename?: 'Subscriber', id: string, email: string }> };
 
 
 export const CreateSubsDocument = gql`
@@ -5623,6 +5635,39 @@ export function useCreateSubsMutation(baseOptions?: Apollo.MutationHookOptions<C
 export type CreateSubsMutationHookResult = ReturnType<typeof useCreateSubsMutation>;
 export type CreateSubsMutationResult = Apollo.MutationResult<CreateSubsMutation>;
 export type CreateSubsMutationOptions = Apollo.BaseMutationOptions<CreateSubsMutation, CreateSubsMutationVariables>;
+export const PublishEmailDocument = gql`
+    mutation publishEmail($email: String) {
+  publishSubscriber(where: {email: $email}) {
+    email
+  }
+}
+    `;
+export type PublishEmailMutationFn = Apollo.MutationFunction<PublishEmailMutation, PublishEmailMutationVariables>;
+
+/**
+ * __usePublishEmailMutation__
+ *
+ * To run a mutation, you first call `usePublishEmailMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `usePublishEmailMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [publishEmailMutation, { data, loading, error }] = usePublishEmailMutation({
+ *   variables: {
+ *      email: // value for 'email'
+ *   },
+ * });
+ */
+export function usePublishEmailMutation(baseOptions?: Apollo.MutationHookOptions<PublishEmailMutation, PublishEmailMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<PublishEmailMutation, PublishEmailMutationVariables>(PublishEmailDocument, options);
+      }
+export type PublishEmailMutationHookResult = ReturnType<typeof usePublishEmailMutation>;
+export type PublishEmailMutationResult = Apollo.MutationResult<PublishEmailMutation>;
+export type PublishEmailMutationOptions = Apollo.BaseMutationOptions<PublishEmailMutation, PublishEmailMutationVariables>;
 export const GetLessonBySlugDocument = gql`
     query GetLessonBySlug($slug: String) {
   lesson(where: {slug: $slug}) {
@@ -5703,3 +5748,38 @@ export function useGetLessonsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
 export type GetLessonsQueryHookResult = ReturnType<typeof useGetLessonsQuery>;
 export type GetLessonsLazyQueryHookResult = ReturnType<typeof useGetLessonsLazyQuery>;
 export type GetLessonsQueryResult = Apollo.QueryResult<GetLessonsQuery, GetLessonsQueryVariables>;
+export const Get_Subscribers_By_EmailDocument = gql`
+    query GET_SUBSCRIBERS_BY_EMAIL {
+  subscribers {
+    id
+    email
+  }
+}
+    `;
+
+/**
+ * __useGet_Subscribers_By_EmailQuery__
+ *
+ * To run a query within a React component, call `useGet_Subscribers_By_EmailQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGet_Subscribers_By_EmailQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGet_Subscribers_By_EmailQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGet_Subscribers_By_EmailQuery(baseOptions?: Apollo.QueryHookOptions<Get_Subscribers_By_EmailQuery, Get_Subscribers_By_EmailQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<Get_Subscribers_By_EmailQuery, Get_Subscribers_By_EmailQueryVariables>(Get_Subscribers_By_EmailDocument, options);
+      }
+export function useGet_Subscribers_By_EmailLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Get_Subscribers_By_EmailQuery, Get_Subscribers_By_EmailQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<Get_Subscribers_By_EmailQuery, Get_Subscribers_By_EmailQueryVariables>(Get_Subscribers_By_EmailDocument, options);
+        }
+export type Get_Subscribers_By_EmailQueryHookResult = ReturnType<typeof useGet_Subscribers_By_EmailQuery>;
+export type Get_Subscribers_By_EmailLazyQueryHookResult = ReturnType<typeof useGet_Subscribers_By_EmailLazyQuery>;
+export type Get_Subscribers_By_EmailQueryResult = Apollo.QueryResult<Get_Subscribers_By_EmailQuery, Get_Subscribers_By_EmailQueryVariables>;

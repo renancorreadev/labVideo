@@ -1,0 +1,6 @@
+query GET_SUBSCRIBERS_BY_EMAIL {
+  subscribers {
+    id
+    email
+  }
+}

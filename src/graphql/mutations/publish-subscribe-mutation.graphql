@@ -1,0 +1,5 @@
+mutation publishEmail($email: String) {
+  publishSubscriber(where: { email: $email }) {
+    email
+  }
+}

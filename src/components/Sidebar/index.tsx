@@ -3,7 +3,7 @@ import { Lesson } from "../Lesson";
 import { useGetLessonsQuery } from "../../graphql/generated";
 
 export function Sidebar() {
-  const { data } = useGetLessonsQuery();
+  const { data } = useGetLessonsQuery({ fetchPolicy: "no-cache" });
 
   return (
     <>
@@ -13,15 +13,13 @@ export function Sidebar() {
         <div className={root.lesson_container}>
           {data?.lessons.map((lesson) => {
             return (
-              <>
-                <Lesson
-                  key={lesson.id}
-                  title={lesson.title}
-                  slug={lesson.slug}
-                  availableAt={new Date(lesson.availableAt)}
-                  type={lesson.lessonType}
-                />
-              </>
+              <Lesson
+                key={lesson.id}
+                title={lesson.title}
+                slug={lesson.slug}
+                availableAt={new Date(lesson.availableAt)}
+                type={lesson.lessonType}
+              />
             );
           })}
         </div>
