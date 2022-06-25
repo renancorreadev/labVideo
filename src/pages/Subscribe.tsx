@@ -49,6 +49,9 @@ export function Subscribe() {
     });
 
     SucessMail();
+    setTimeout(() => {
+      window.location.reload();
+    }, 4000);
   };
   const handleToRender = (event: FormEvent) => {
     event?.preventDefault();
